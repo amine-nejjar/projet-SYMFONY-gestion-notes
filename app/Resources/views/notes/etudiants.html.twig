@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div style="margin-top:50px">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col"> Details </th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	    	<th scope="row">Nom etudiant</th>
+	    	<td>{{etudiant.nom}}</td>
+	    </tr>
+	    <tr>
+	    	<th scope="row">Prenom etudiant</th>
+	    	<td>{{etudiant.prenom}}</td>
+	    </tr>
+	    <tr>
+	    	<th scope="row">Email etudiant</th>
+	    	<td>{{etudiant.email}}</td>
+	    </tr>
+	    <tr>
+	    	<th scope="row">Addresse etudiant</th>
+	    	<td>{{etudiant.addresse}}</td>
+	    </tr>
+	    <tr>
+	    	<th scope="row">année scolaire</th>
+	    	<td>{{etudiant.annee}}</td>
+	    </tr>
+	  </tbody>
+	</table>
+	</div>
+	<div style="margin-top:30px;text-align: center">
+		<a href="/updateEtudiant/{{etudiant.id}}"><button class="btn btn-primary">Modifier </button></a>
+	</div>
+{% endblock %}

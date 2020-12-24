@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block nav %}
+<a class="nav-link" href="\updatemdp">Modifier Mdp</a>
+{% endblock %}
+{% block body %}
+	<div style="margin-top:50px">
+		<h2 class="page-header">Modifier Mdp</h2><br/>
+		{{form_start(form)}}
+		{{form_widget(form)}}
+		{{form_end(form)}}
+
+		<br/><br/>
+		{% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+        {% if ( label == 'successMDP' ) %}
+            <div class="alert alert-success alert-dismissible fade show"  role="alert">
+                {{ flash }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+            </div>
+        {% elseif ( label == 'errorMDP' ) %}
+            <div class="alert alert-danger alert-dismissible fade show">
+                {{ flash }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+	</div>
+{% endblock %}

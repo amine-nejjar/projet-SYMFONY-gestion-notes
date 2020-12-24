@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block title %} HOME PAGE {% endblock %}
+{% block body%} 
+<div style="margin-top:50px">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Nom</th>
+	      <th scope="col">Prenom</th>
+	      <th scope="col"></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{%  for etudiant in etudiants %}
+	    <tr>
+	      <th scope="row">{{etudiant.id}}</th>
+	      <td>{{etudiant.nom}}</td>
+	      <td>{{etudiant.prenom}}</td>
+	      <td>
+	      	<a href="/detail/{{etudiant.id}}"><button class="btn btn-primary">detail</button></a>
+			<a href="/notes/{{etudiant.id}}"><button class="btn btn-primary">Voir les notes</button></a>
+			<a href="/ajouterNote/{{etudiant.id}}"><button class="btn btn-primary">Ajouter une note</button></a>
+			<a href="/delete/{{etudiant.id}}"><button class="btn btn-danger">supprimer</button></a>
+	      </td>
+	    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+
+	<br/><br/>
+		{% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+        {% if ( label == 'successDelete' ) %}
+            <div class="alert alert-success alert-dismissible fade show"  role="alert">
+                {{ flash }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+            </div>
+        {% elseif ( label == 'errorDelete' ) %}
+            <div class="alert alert-danger alert-dismissible fade show">
+                {{ flash }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</div>
+{% endblock %}

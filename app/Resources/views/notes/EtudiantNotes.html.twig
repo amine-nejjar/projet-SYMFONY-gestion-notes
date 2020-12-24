@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %} NOTES {% endblock %}
+{% block body %}
+	<div style="margin-top:50px">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col"> Matiere </th>
+           <th scope="col"> Note </th>
+           <th scope="col"></th>
+	    </tr>
+	  </thead>
+      {% for note in notes %}
+	  <tbody>
+	  	{% if note.valeur>=12 %}
+	    	<tr class="table-success">
+	    {% else %}
+	    	<tr class="table-danger">
+	    {% endif %}
+            <td>{{note.id}}</td>
+	    	<td>{{note.matiere}}</td>
+            <td>{{note.valeur}}</td>
+            <td><a href="/deleteNote/{{note.id}}"<button class="btn btn-danger" style="font-size:12px;">supprimer</button></td>
+	    </tr>
+	    
+	  </tbody>
+      {% endfor %}
+	</table>
+	
+	</div>
+{% endblock %}
